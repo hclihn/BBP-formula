@@ -359,7 +359,7 @@ func (f BBPFormula) GenWorker(p uint) (BBPWorker, error) {
 func (f BBPFormula) Calculate(nBits uint) (*big.Float, error) {
   runtime.GOMAXPROCS(runtime.NumCPU())
 
-  p := nBits + 32 // big float precision
+  p := nBits + 32 // big float precision (extra 32 bits is about 10 decimal digits for errors)
   n := f.TermsNeeded(nBits)
 
   result := make(chan *big.Float, n)
